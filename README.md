@@ -51,17 +51,19 @@ npm i
 Create a new file called .env and add the below values. These will be used to retrieve product data from the Neto API.
 
 ```
-NETOAPI_ENDPOINT=NETOAPI_ENDPOINT
-NETOAPI_USERNAME=NETOAPI_USERNAME
-NETOAPI_KEY=NETOAPI_KEY
+NETOAPI_ENDPOINT=https://domain.neto.com.au/do/WS/NetoAPI
+NETOAPI_USERNAME=admin
+NETOAPI_KEY=ABCDEF123456
 ```
 
-##### NETOAPI_ENDPOINT:
-The endpoint for your Neto webstore eg. https://domain.neto.com.au/do/WS/NetoAPI
-##### NETOAPI_USERNAME:
-Your Neto username
-##### NETOAPI_KEY:
-Your Neto API key (Specific to the above username)
+NETOAPI_ENDPOINT:
+The endpoint for your Neto webstore eg. `https://domain.neto.com.au/do/WS/NetoAPI`
+
+NETOAPI_USERNAME:
+Your Neto username eg. `admin`
+
+NETOAPI_KEY:
+Your Neto API key (Specific to the above username) eg. `ABCDEF123456`
 
 For further details, refer to the [GetItem API Documentation](https://developers.neto.com.au/documentation/engineers/api-documentation/products/getitem)
 
