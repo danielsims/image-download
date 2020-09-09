@@ -56,9 +56,12 @@ NETOAPI_USERNAME=NETOAPI_USERNAME
 NETOAPI_KEY=NETOAPI_KEY
 ```
 
-NETOAPI_ENDPOINT: The endpoint for your Neto webstore eg. https://domain.neto.com.au/do/WS/NetoAPI
-NETOAPI_USERNAME= Your Neto Username
-NETOAPI_KEY= Your Neto API Key (Specific to the above username)
+##### NETOAPI_ENDPOINT:
+The endpoint for your Neto webstore eg. https://domain.neto.com.au/do/WS/NetoAPI
+##### NETOAPI_USERNAME:
+Your Neto username
+##### NETOAPI_KEY:
+Your Neto API key (Specific to the above username)
 
 For further details, refer to the [GetItem API Documentation](https://developers.neto.com.au/documentation/engineers/api-documentation/products/getitem)
 
