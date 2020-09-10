@@ -48,7 +48,7 @@ npm i
 
 #### Configure Environment Variables
 
-Create a new file called .env and add the below values. These will be used to retrieve product data from the Neto API.
+Create a new file called .env in the root directory and add the below values. These will be used to retrieve product data from the Neto API.
 
 ```
 NETOAPI_ENDPOINT=https://domain.neto.com.au/do/WS/NetoAPI
@@ -75,4 +75,4 @@ npm start
 
 ### View Images
 
-When complete, product images will be saved to the `images` directory, and will be assigned to their relevant subdirectories eg. full, alt_1, alt_2 etc.
+When complete, product images will be saved to the `images` directory, and will be assigned to their relevant subdirectories eg. `full`, `alt_1`, `alt_2` etc.
