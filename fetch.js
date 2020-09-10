@@ -28,12 +28,15 @@ const fetchProducts = page => {
     .then(products => {
       downloadProducts(products)
 
-      if (products.length > 0) {
-        let nextPage = page + 1;
-        fetchProducts(nextPage)
-      } else {
-        console.log('Download Complete')
-      }
+      setTimeout(function() {
+        if (products.length > 0) {
+          let nextPage = page + 1;
+          fetchProducts(nextPage)
+        } else {
+          console.log('Download Complete')
+        }
+      }, 2000)
+
     })
   } catch(err) {
     console.log(err)
