@@ -1,46 +1,37 @@
 const fetch = require('node-fetch');
 const { downloadProducts } = require('./download')
-require('dotenv').config()
 
-const fetchProducts = page => {
-  try {
-    fetch(process.env.NETOAPI_ENDPOINT, {
+const fetchProducts = (page, url, key) => {
+
+  fetch(url, {
       method: 'POST',
       headers: {
         'NETOAPI_ACTION': 'GetItem',
-        'NETOAPI_USERNAME': process.env.NETOAPI_USERNAME,
-        'NETOAPI_KEY': process.env.NETOAPI_KEY,
+        'NETOAPI_KEY': `${key}`,
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-         'Filter': {
-            'IsActive': ["True", "False"],
-            "Limit": "50",
-            "Page": `${page}`,
-            'OutputSelector': [
-              'Images'
-            ]
-          }
-        })
+        'Filter': {
+          'IsActive': ["True", "False"],
+          "Limit": "100",
+          "Page": `${page}`,
+          'OutputSelector': [
+            'Images'
+          ]
+        }
       })
+    })
     .then(res => res.json())
     .then(data => data.Item)
     .then(products => {
       downloadProducts(products)
 
-      setTimeout(function() {
-        if (products.length > 0) {
-          let nextPage = page + 1;
-          fetchProducts(nextPage)
-        } else {
-          console.log('Download Complete')
-        }
-      }, 2000)
+      if (products.length > 0) {
+        let nextPage = page + 1;
+        fetchProducts(nextPage, url, key)
+      }
 
-    })
-  } catch(err) {
-    console.log(err)
-  }
-};
+    }).catch(err => console.log(err));
+}
 
 module.exports = { fetchProducts };

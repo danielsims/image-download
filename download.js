@@ -1,38 +1,48 @@
+const async = require("async");
 const request = require('request')
 const fs = require('fs')
 
+const queue = async.queue(function(task, callback) {
+  request.head(task.url, (err, res, body) => {
+    request(task.url)
+      .pipe(fs.createWriteStream(task.path))
+    callback(console.log(` Image Downloaded - ${task.url}`))
+  })
+}, 10);
+
+queue.drain(function() {
+  console.log('\n Download Complete \n');
+});
+
 const downloadProducts = products => {
 
-  const download = (url, path, callback) => {
-    request.head(url, (err, res, body) => {
-      request(url)
-        .pipe(fs.createWriteStream(path))
-        .on('close', callback)
-    })
-  }
-
   for (let product in products) {
-   const images = products[product].Images;
+    const images = products[product].Images;
 
-   for (let image in images) {
-     const url = images[image].URL;
-     const folder = url.split('/').slice(4)[0];
-     const name = url.split('/').slice(-1)[0];
-     const path = './images/' + folder + '/' + name ;
+    for (let image in images) {
+      const url = images[image].URL;
+      const folder = url.split('/').slice(4)[0];
+      const name = url.split('/').slice(-1)[0];
+      const path = './images/' + folder + '/' + name;
 
-     if (fs.existsSync('images/' + folder)) {
-       null
-     } else {
-       fs.mkdir(`images/${folder}`, (err) => {
+      if (fs.existsSync('images/' + folder)) {
+        null
+      } else {
+        fs.mkdir(`images/${folder}`, (err) => {
           if (err) throw err;
         });
-     }
+      }
 
-     download(url, path, () => {
-       console.log('✅ Image Downloaded - ' + url)
-     })
+      queue.push({url: url, path: path}, function(err) {
+        if (err) {
+          console.log(err);
+        }
+      });
+
     }
-   }
+  }
 }
 
-module.exports = { downloadProducts };
+module.exports = {
+  downloadProducts
+};

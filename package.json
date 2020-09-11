@@ -11,8 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "async": "^3.2.0",
     "fs": "0.0.1-security",
+    "inquirer": "^7.3.3",
     "node-fetch": "^2.6.1",
     "request": "^2.88.2"
   }

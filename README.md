@@ -46,33 +46,26 @@ cd image-download
 npm i
 ```
 
-#### Configure Environment Variables
-
-Create a new file called .env in the root directory and add the below values. These will be used to retrieve product data from the Neto API.
-
-```
-NETOAPI_ENDPOINT=https://domain.neto.com.au/do/WS/NetoAPI
-NETOAPI_USERNAME=admin
-NETOAPI_KEY=ABCDEF123456
-```
-
-NETOAPI_ENDPOINT:
-The endpoint for your Neto webstore eg. `https://domain.neto.com.au/do/WS/NetoAPI`
-
-NETOAPI_USERNAME:
-Your Neto username eg. `admin`
-
-NETOAPI_KEY:
-Your Neto API key (Specific to the above username) eg. `ABCDEF123456`
-
-For further details, refer to the [GetItem API Documentation](https://developers.neto.com.au/documentation/engineers/api-documentation/products/getitem)
-
 #### Start Application
 
 ```bash
 npm start
 ```
 
+#### API Authentication
+
+You will be prompted to enter the Endpoint URL and API Key for your webstore, which will be used to fetch product URL's from the Neto API.
+
+NETOAPI_ENDPOINT:
+The endpoint URL for your Neto webstore eg. `https://storedomain.neto.com.au/do/WS/NetoAPI`
+
+NETOAPI_KEY:
+The global API key for your Neto webstore. To obtain your global API Key in the cPanel, navigate to **Settings & Tools** > **All Settings & Tools** > **API Settings**.
+
+
+For further details on authentication, refer to the [GetItem API Documentation](https://developers.neto.com.au/documentation/engineers/api-documentation/products/getitem) and [Authentication Documentation.](https://developers.neto.com.au/documentation/engineers/api-documentation/introduction-and-getting-started/authentication/)
+
+
 ### View Images
 
-When complete, product images will be saved to the `images` directory, and will be assigned to their relevant subdirectories eg. `full`, `alt_1`, `alt_2` etc.
+When complete, product images will be saved to the `images` directory, and will be assigned to their relevant subdirectories eg. full, alt_1, alt_2 etc.
