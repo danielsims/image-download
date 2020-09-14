@@ -52,14 +52,16 @@ npm i
 npm start
 ```
 
-#### API Authentication
+### API Authentication
 
 You will be prompted to enter the Endpoint URL and API Key for your webstore, which will be used to fetch product URL's from the Neto API.
 
-NETOAPI_ENDPOINT:
+#### NETOAPI_ENDPOINT
+
 The endpoint URL for your Neto webstore eg. `https://storedomain.neto.com.au/do/WS/NetoAPI`
 
-NETOAPI_KEY:
+#### NETOAPI_KEY
+
 The global API key for your Neto webstore. To obtain your global API Key in the cPanel, navigate to **Settings & Tools** > **All Settings & Tools** > **API Settings**.
 
 
